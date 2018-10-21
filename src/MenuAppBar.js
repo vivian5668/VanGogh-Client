@@ -26,19 +26,22 @@ function MenuAppBar(props) {
       <AppBar position="static" color="grey">
         <Toolbar>
            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          <IconButton className={classes.menuButton} color="grey" aria-label="Menu">
+           <IconButton href="/" className={classes.menuButton} color="grey" aria-label="Menu">
+            <i class="fas fa-home"></i>
+          </IconButton>   
+          <IconButton href="/gallery" className={classes.menuButton} color="grey" aria-label="Menu">
             <i class="fas fa-th-large"></i>
-          </IconButton>
-          <IconButton className={classes.menuButton} color="grey" aria-label="Menu">
+          </IconButton>       
+          <IconButton href="/project" className={classes.menuButton} color="grey" aria-label="Menu">
             <i class="fas fa-palette"></i>
           </IconButton>         
           <Typography align="center" variant="h6" color="grey" className={classes.grow}>
             Moody Van Gogh
           </Typography>
-          <IconButton className={classes.menuButton} color="grey" aria-label="Menu">
+          <IconButton href="https://github.com/vivian5668" className={classes.menuButton} color="grey" aria-label="Menu">
             <i class="fab fa-github"></i>
           </IconButton>
-          <IconButton className={classes.menuButton} color="grey" aria-label="Menu">
+          <IconButton href="https://www.linkedin.com/in/chelsea-qianwei-zhu/" className={classes.menuButton} color="grey" aria-label="Menu">
             <i class="fab fa-linkedin"></i>
           </IconButton>
         </Toolbar>

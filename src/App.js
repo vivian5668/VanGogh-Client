@@ -38,10 +38,7 @@ class App extends Component {
                   <Grid item xs={4}>
 
                   </Grid>                                              
-                </Grid>
-                  
-                  
-                  
+                </Grid>  
               </nav>
               <Route exact path = '/' component={Home} />
               <Route path = '/gallery' component={Gallery} />
