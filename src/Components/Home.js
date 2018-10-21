@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import homePic from './homePic.png';
+import homePic from '../static/homePic.png';
 import Grid from '@material-ui/core/Grid';
 
 

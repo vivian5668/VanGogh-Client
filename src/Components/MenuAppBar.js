@@ -6,6 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 
+
 const styles = {
   root: {
     flexGrow: 1,
@@ -26,8 +27,8 @@ function MenuAppBar(props) {
       <AppBar position="static" color="grey">
         <Toolbar>
            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-           <IconButton href="/" className={classes.menuButton} color="grey" aria-label="Menu">
-            <i class="fas fa-home"></i>
+          <IconButton href="/" className={classes.menuButton} color="grey" aria-label="Menu">
+              <i class="fas fa-home"></i>
           </IconButton>   
           <IconButton href="/gallery" className={classes.menuButton} color="grey" aria-label="Menu">
             <i class="fas fa-th-large"></i>
@@ -36,7 +37,7 @@ function MenuAppBar(props) {
             <i class="fas fa-palette"></i>
           </IconButton>         
           <Typography align="center" variant="h6" color="grey" className={classes.grow}>
-            Moody Van Gogh
+            Moody Van Gogh &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
           </Typography>
           <IconButton href="https://github.com/vivian5668" className={classes.menuButton} color="grey" aria-label="Menu">
             <i class="fab fa-github"></i>
