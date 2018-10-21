@@ -12,3 +12,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+#buttonNav {
+  color: grey;
+}
+
+#HomeText1 {
+  color: rgb(60, 159, 221);
+  font-size: 1.2vw;
+  font-weight: bold;
+}
+
+#HomeText2 {
+  color: black;
+  font-size: 2vw;
+  font-weight: bold;
+}
+
+#HomeText3 {
+  color: grey;
+  font-size: 1.2vw;
+}
