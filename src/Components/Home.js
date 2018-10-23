@@ -8,7 +8,7 @@ class Home extends Component {
     return (
       <div>
         <p></p>
-        <Grid container spacing={12}>
+        <Grid container spacing={24}>
             <Grid item xs={1}>
 
             </Grid>

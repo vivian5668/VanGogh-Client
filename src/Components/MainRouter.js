@@ -16,7 +16,7 @@ class MainRouter extends Component {
         <Router>
         <div>
             <nav>
-            <Grid container spacing={12}>
+            <Grid container spacing={24}>
                 <Grid item xs={4}>
 
                 </Grid>

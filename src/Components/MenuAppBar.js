@@ -24,26 +24,26 @@ function MenuAppBar(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="grey">
+      <AppBar position="static" color = "default">
         <Toolbar>
            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          <IconButton href="/" className={classes.menuButton} color="grey" aria-label="Menu">
-              <i class="fas fa-home"></i>
+          <IconButton href="/" className={classes.menuButton}  aria-label="Menu">
+              <i className="fas fa-home"></i>
           </IconButton>   
-          <IconButton href="/gallery" className={classes.menuButton} color="grey" aria-label="Menu">
-            <i class="fas fa-th-large"></i>
+          <IconButton href="/gallery" className={classes.menuButton}  aria-label="Menu">
+            <i className="fas fa-th-large"></i>
           </IconButton>       
-          <IconButton href="/project" className={classes.menuButton} color="grey" aria-label="Menu">
-            <i class="fas fa-palette"></i>
+          <IconButton href="/project" className={classes.menuButton}  aria-label="Menu">
+            <i className="fas fa-palette"></i>
           </IconButton>         
-          <Typography align="center" variant="h6" color="grey" className={classes.grow}>
+          <Typography align="center" variant="h6"  className={classes.grow}>
             Moody Van Gogh &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
           </Typography>
-          <IconButton href="https://github.com/vivian5668" className={classes.menuButton} color="grey" aria-label="Menu">
-            <i class="fab fa-github"></i>
+          <IconButton href="https://github.com/vivian5668" className={classes.menuButton}  aria-label="Menu">
+            <i className="fab fa-github"></i>
           </IconButton>
-          <IconButton href="https://www.linkedin.com/in/chelsea-qianwei-zhu/" className={classes.menuButton} color="grey" aria-label="Menu">
-            <i class="fab fa-linkedin"></i>
+          <IconButton href="https://www.linkedin.com/in/chelsea-qianwei-zhu/" className={classes.menuButton}  aria-label="Menu">
+            <i className="fab fa-linkedin"></i>
           </IconButton>
         </Toolbar>
       </AppBar>
