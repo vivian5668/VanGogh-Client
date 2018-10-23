@@ -1,100 +1,102 @@
 import React, {Component} from 'react';
-import ImageCrop from './ImageCrop';
-import WebcamCapture from './WebCam';
-import {Glyphicon, Tabs, Tab, Nav, Grid, Row, Col, NavItem, Button} from 'react-bootstrap';
-import profile from './profile.png';
-import './ImageCrop.css';
-import axios from 'axios'
+import axios from 'axios';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import Step1 from './ProjectComponents/Step1';
+import Step2 from './ProjectComponents/Step2';
+import Step3 from './ProjectComponents/Step3';
+//import Step2 from './ProjectComponents/Step2';
+//import Step3 from './ProjectComponents/Step3';
+import NavButtons from './NavButtons';
+import { 
+    BrowserRouter as Router,
+    Route,
+    Link 
+  } from 'react-router-dom';
 
 class Project extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        uploadClicked: false,
-        captureClicked: false,
-        image: profile,
-        uploadSucceeded: false,
+        toStep2ButtonClicked: false,
+        toStep3ButtonClicked: false,
+        toStep1ButtonClicked: true,
     };
-    this.child = React.createRef()
-    this.handleNewImage = this.handleNewImage.bind(this)
-    this.handleUpload = this.handleUpload.bind(this)
-    this.handleCapture = this.handleCapture.bind(this)
-    }
-
-  handleNewImage = e => {
-    this.setState({ image: e.target.files[0] })
+    this.toStep2ButtonClick = this.toStep2ButtonClick.bind(this);
+    this.toStep3ButtonClick = this.toStep3ButtonClick.bind(this);
+    this.toStep1ButtonClick = this.toStep1ButtonClick.bind(this);
   }
 
-  handleUpload() {
+  toStep2ButtonClick(event) {
     this.setState({
-        uploadClicked: true,
-        captureClicked: false,
-        uploadSucceeded: false,
-        camPicReadyToCrop: false,
-        image: profile,
-    })
+      toStep2ButtonClicked: true,
+      toStep3ButtonClicked: false,
+      toStep1ButtonClicked: false,
+   });
   }
 
-  handleSave = () => {
-    this.child.current.handleSave();
+  toStep3ButtonClick(event) {
     this.setState({
-        uploadSucceeded: true
-    })
-    if (this.state.image===null){
-      var fd = new FormData()
-      fd.append('image', profile)
-    }
-    else{
-      var fd = new FormData()
-      fd.append('image', this.state.image)
-    }   
+      toStep2ButtonClicked: false,
+      toStep3ButtonClicked: true,
+      toStep1ButtonClicked: false,
+   });
+  }
 
-    // fd.append();
-    //change this api endpoint as needed
-    axios.post('/api/picuploads/', fd)
-      .then(res => {
-        console.log(res)
-      })
+  toStep1ButtonClick(event) {
+    this.setState({
+      toStep2ButtonClicked: false,
+      toStep3ButtonClicked: false,
+      toStep1ButtonClicked: true,
+   });
   }
 
   render() {
-    let uploadButton = 
-          <Col sm={4}>
-               <div id="upload_button">
-                  <label onClick={this.handleUpload}>
-                    <input className='input' name="newImage" type="file" onChange={this.handleNewImage}/>
-                    <span className="btn btn-primary1"><Glyphicon glyph="level-up" />&nbsp;&nbsp;&nbsp;&nbsp;Upload a Photo</span>
-                  </label>
-                  <br/>
-                  <label onClick={this.handleCapture}>
-                    <input className='input' type="button" />
-                    <span className="btn btn-primary1"><Glyphicon glyph="camera" />&nbsp;&nbsp;&nbsp;&nbsp;{this.state.photoTakingStatus}</span>
-                  </label>  
-                  <br/>                     
-                  <label className='submitButton'>
-                    <input className='input' type="button" onClick={this.handleSave} value="Preview" />
-                    <span className="btn btn-primary1"><Glyphicon glyph="user" />&nbsp;&nbsp;&nbsp;&nbsp;Use this Picture</span>
-                  </label>  
-                </div>              
-                <br />
-                <div className='uploadMsg'>
-                  {this.state.uploadSucceeded? <p>Uploaded Successfully</p> : null}
-                </div>
-            </Col>
+    let toStep2Button = 
+      <Router>
+        <div>
+          <Link style={{ textDecoration: 'none' }} to='/project/step2'><NavButtons label = 'To Step2' onClick = {this.toStep2ButtonClick} /></Link>
+          <Route exact path = '/project/step2' component={Step2} />
+        </div>
+      </Router>
 
-    if (this.state.uploadClicked) {
-        return (
-          <div>
-              <Row>
-                <Col sm={8}>
-                  <ImageCrop ref={this.child} image={this.state.image} />
-                </Col>
-                {uploadButton}
-              </Row>
-          </div>
-        )
-      }
+    let toStep3Button = 
+          <Router>
+            <div>
+              <Link style={{ textDecoration: 'none' }} to='/project/step3'><NavButtons label = 'To Step3' onClick = {this.toStep3ButtonClick} /></Link>
+              <Route exact path = '/project/step3' component={Step3} />
+            </div>
+          </Router>
 
+    let toStep1Button = 
+          <Router>
+            <div>
+              <Link style={{ textDecoration: 'none' }} to='/project/step1'><NavButtons label = 'To Step1' onClick = {this.toStep1ButtonClick}/></Link>
+              <Route exact path = '/project/step1' component={Step1} />
+            </div>
+          </Router>
+
+    if (this.state.toStep1ButtonClicked) {
+      return (
+        <div>
+          <Step1 linkButtonToNextPage = {toStep2Button} />
+        </div>
+      )
+    }
+    else if (this.state.toStep2ButtonClicked) {
+      return (
+        <div>
+          <Step2 linkButtonToNextPage = {toStep3Button} />
+        </div>
+      )
+    }    
+    else if (this.state.toStep3ButtonClicked) {
+      return (
+        <div>
+          <Step3 linkButtonToNextPage = {toStep1Button} />
+        </div>
+      )
+    } 
   }
 }
 

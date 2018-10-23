@@ -10,8 +10,6 @@ import {
     Link 
   } from 'react-router-dom';
 
-
-
 class MainRouter extends Component {
   render() {
     return (

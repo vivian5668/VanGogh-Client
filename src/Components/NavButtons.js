@@ -16,7 +16,7 @@ function NavButtons(props) {
   const { classes } = props;
   return (
     <div>
-      <Button id='buttonNav' size="small" variant="outlined" className={classes.button}>
+      <Button id='buttonNav' size="small" variant="outlined" onClick={props.onClick} lassName={classes.button}>
         {props.label}
       </Button>
     </div>
