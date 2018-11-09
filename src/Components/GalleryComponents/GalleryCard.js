@@ -7,14 +7,15 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
+import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-
 
 const styles = theme => ({
   card: {
@@ -27,7 +28,19 @@ const styles = theme => ({
   actions: {
     display: 'flex',
   },
-
+  expand: {
+    transform: 'rotate(0deg)',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+    }),
+    marginLeft: 'auto',
+    [theme.breakpoints.up('sm')]: {
+      marginRight: -8,
+    },
+  },
+  expandOpen: {
+    transform: 'rotate(180deg)',
+  },
   avatar: {
     backgroundColor: red[500],
   },
@@ -61,7 +74,7 @@ class GalleryCard extends React.Component {
         />
         <CardMedia
           className={classes.media}
-          image={this.props.content}
+          image={this.props.result}
           title="Contemplative Reptile"
         />
         <CardContent>
@@ -77,8 +90,27 @@ class GalleryCard extends React.Component {
           <IconButton aria-label="Share">
             <ShareIcon />
           </IconButton>
+          <IconButton
+            className={classnames(classes.expand, {
+              [classes.expandOpen]: this.state.expanded,
+            })}
+            onClick={this.handleExpandClick}
+            aria-expanded={this.state.expanded}
+            aria-label="Show more"
+          >
+            <ExpandMoreIcon />
+          </IconButton>
         </CardActions>
-
+        <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            <div>
+              <img width={280} src={this.props.style} />
+            </div>
+            <div>
+              <img width={280} src={this.props.content} />
+            </div>
+          </CardContent>
+        </Collapse>
       </Card>
     );
   }

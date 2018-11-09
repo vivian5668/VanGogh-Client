@@ -11,17 +11,16 @@ class Step extends Component {
     render() {
         return (
             <div>
-            <p>Step {this.props.step}</p>
-            <Grid container spacing={24} >
-                <Grid item xs={3}>
-                     {this.props.button}
+                <Grid item xs={6}></Grid>
+                <p>Step {this.props.step}</p>
+                <Grid container spacing={24} >
+                    <Grid item xs={3}>
+                        {this.props.button}
 
-                </Grid>         
-                <Grid item xs={1}>
-
-                </Grid>                
-            </Grid>
-        </div>
+                    </Grid>         
+                    <Grid item xs={1}></Grid>                
+                </Grid>
+            </div>
         );
     }
 }
