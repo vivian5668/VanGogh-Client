@@ -104,10 +104,10 @@ class GalleryCard extends React.Component {
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
             <div>
-              <img width={280} src={this.props.style} />
+              <img width={280} src={this.props.style} alt='style'/>
             </div>
             <div>
-              <img width={280} src={this.props.content} />
+              <img width={280} src={this.props.content} alt='content'/>
             </div>
           </CardContent>
         </Collapse>

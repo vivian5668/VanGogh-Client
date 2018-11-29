@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-base64Img = require('base64-img');
+import base64Img from 'base64-img';
 
 class ImageUpload extends React.Component {
     constructor(props) {
@@ -23,22 +23,55 @@ class ImageUpload extends React.Component {
     emailChangeHandler = (event) => {
         this.setState({email: event.target.value})
     }
-
+    getBase64(file, cb) {
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            cb(reader.result)
+        };
+        reader.onerror = function (error) {
+            console.log('Error: ', error);
+        };
+    }
     uploadHandler = () => {
-        const formData = new FormData()
-        let image64Bit = image64Bit.base64(this.state.selectedFile, function(err, data) {
-            console.log('error when convert image to 64 bits: ' + err);
-        })
-        formData.append('content_image_encoding', this.state.image64Bit)
-        formData.append('style_image', this.state.style)
-        formData.append('email', this.state.email)
-        formData.append('name', this.state.name)
-        
-        axios.post('my-domain.com/file-upload', formData, {
-        onUploadProgress: progressEvent => {
-            console.log('uploading progress: ' + progressEvent.loaded / progressEvent.total)
+        //const formData = new FormData()
+        let formData = {}
+        this.getBase64(this.state.selectedFile, (result) => {
+            console.log(result.split(',')[1])
+            formData = {
+                "content_image_encoding": "data:image/jpeg;base64," + result.split(',')[1],
+                "style_image": this.state.style,
+                "email": this.state.email,
+                "name": this.state.name
             }
-        })
+            console.log("resule")
+            console.log(formData)
+            axios.post('https://f43rz8mmc3.execute-api.us-west-2.amazonaws.com/prod/submit', formData, {
+                onUploadProgress: progressEvent => {
+                    console.log('uploading progress: ' + progressEvent.loaded / progressEvent.total)
+                    }
+                }).then(response =>{
+                    console.log(response)}
+                )
+            // image64Bit = result.split(',')[1];
+        });
+        // let image64Bit = base64Img.base64(this.state.selectedFile, function(err, data) {
+        //     console.log('error when convert image to 64 bits: ' + err);
+        // })
+        // formData.append('content_image_encoding', image64Bit)
+        // formData.append('style_image', this.state.style)
+        // formData.append('email', this.state.email)
+        // formData.append('name', this.state.name)
+        // const formData = {
+        //     "content_image_encoding": image64Bit,
+        //     "style_image": this.state.style,
+        //     "email": this.state.email,
+        //     "name": this.state.name
+        // }
+        
+        console.log(formData)
+
+
       }
   
     render() {
