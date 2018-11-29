@@ -1,4 +1,4 @@
 References:
 
-http://www.hartzis.me/react-image-upload/
+https://academind.com/learn/react/snippets/image-upload/
 
