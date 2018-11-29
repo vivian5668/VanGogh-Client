@@ -6,8 +6,8 @@ class ImageUpload extends React.Component {
       super(props);
       this.state = {
         selectedFile: null,
-        name: null,
-        email: null,
+        name: '',
+        email: '',
         style: "Van_style",
         }
     }
@@ -33,7 +33,6 @@ class ImageUpload extends React.Component {
         };
     }
     uploadHandler = () => {
-        //const formData = new FormData()
         let formData = {}
         this.getBase64(this.state.selectedFile, (result) => {
             console.log(result.split(',')[1])
@@ -52,28 +51,15 @@ class ImageUpload extends React.Component {
                 }).then(response =>{
                     console.log(response)}
                 )
-            // image64Bit = result.split(',')[1];
         });
-        // let image64Bit = base64Img.base64(this.state.selectedFile, function(err, data) {
-        //     console.log('error when convert image to 64 bits: ' + err);
-        // })
-        // formData.append('content_image_encoding', image64Bit)
-        // formData.append('style_image', this.state.style)
-        // formData.append('email', this.state.email)
-        // formData.append('name', this.state.name)
-        // const formData = {
-        //     "content_image_encoding": image64Bit,
-        //     "style_image": this.state.style,
-        //     "email": this.state.email,
-        //     "name": this.state.name
-        // }
-        
-        console.log(formData)
-
-
+        console.log('formData log: ' + formData)
       }
   
     render() {
+      let name = this.state.name;
+      let email = this.state.email;
+      let selectedFile = this.state.selectedFile;
+      let isEnabled = name.length > 0 && email.length > 0 && !!selectedFile;
       return (
         <div>
             <label>Your name:</label>
@@ -83,7 +69,7 @@ class ImageUpload extends React.Component {
             <input type="email" onChange={this.emailChangeHandler} placeholder="email"/>
             <br />
             <input type="file" onChange={this.fileChangedHandler} />
-            <button onClick={this.uploadHandler}>Upload!</button>
+            <button disabled={!isEnabled} onClick={this.uploadHandler}>Submit</button>
         </div>
       )
     }
