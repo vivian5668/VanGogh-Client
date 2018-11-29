@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
+import React from 'react';
 import axios from 'axios';
-import base64Img from 'base64-img';
 
 class ImageUpload extends React.Component {
     constructor(props) {
