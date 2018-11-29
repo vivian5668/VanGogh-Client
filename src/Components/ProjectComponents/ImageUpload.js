@@ -9,6 +9,7 @@ class ImageUpload extends React.Component {
         name: '',
         email: '',
         style: "Van_style",
+        uploadStatus: '',
         }
     }
     fileChangedHandler = (event) => {
@@ -49,8 +50,9 @@ class ImageUpload extends React.Component {
                     console.log('uploading progress: ' + progressEvent.loaded / progressEvent.total)
                     }
                 }).then(response =>{
-                    console.log(response)}
-                )
+                    console.log(response);
+                    this.setState({uploadStatus: response.data});
+                })
         });
         console.log('formData log: ' + formData)
       }
@@ -70,6 +72,7 @@ class ImageUpload extends React.Component {
             <br />
             <input type="file" onChange={this.fileChangedHandler} />
             <button disabled={!isEnabled} onClick={this.uploadHandler}>Submit</button>
+            <div id='imageUploadStatus' style={{color: 'red'}}> {this.state.uploadStatus} </div>
         </div>
       )
     }
