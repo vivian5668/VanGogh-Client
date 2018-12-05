@@ -45,7 +45,9 @@ class ImageUpload extends React.Component {
             }
             console.log("resule")
             console.log(formData)
-            axios.post('https://f43rz8mmc3.execute-api.us-west-2.amazonaws.com/prod/submit', formData, {
+            
+//            axios.post('https://f43rz8mmc3.execute-api.us-west-2.amazonaws.com/prod/submit', formData, {
+            axios.post('https://07td6ekz5b.execute-api.us-west-2.amazonaws.com/prod/submit', formData, {
                 onUploadProgress: progressEvent => {
                     console.log('uploading progress: ' + progressEvent.loaded / progressEvent.total)
                     }
