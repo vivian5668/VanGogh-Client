@@ -62,7 +62,7 @@ class ImageUpload extends React.Component {
                     }
                 }).then(response =>{
                     console.log(response);
-                    this.setState({uploadStatus: response.data});
+                    this.setState({uploadStatus: response.status});
                 })
         });
         console.log('formData log: ' + formData)
@@ -79,6 +79,16 @@ class ImageUpload extends React.Component {
           margin: theme.spacing.unit,
         },
       });
+
+      let uploadStatus = '';
+      let statusSuccess = <div id='imageUploadStatus' style={{color: 'red'}}> Uploaded Successfully! </div>
+      let statusFail = <div id='imageUploadStatus' style={{color: 'red'}}> Something went wrong, please try again later. :)</div>
+
+      if (this.state.uploadStatus === 200) {
+        uploadStatus = statusSuccess;
+      } else if (this.state.uploadStatus.length > 0) {
+        uploadStatus = statusFail;
+      }
 
       return (
         <Grid container spacing={24}>
@@ -115,7 +125,7 @@ class ImageUpload extends React.Component {
 
                 <Input type="file" onChange={this.fileChangedHandler}/>     
                 <button disabled={!isEnabled} onClick={this.uploadHandler}>Submit</button>
-                <div id='imageUploadStatus' style={{color: 'red'}}> {this.state.uploadStatus} </div>  
+                <div id='imageUploadStatus' style={{color: 'red'}}> {uploadStatus} </div>  
               </div>
             </Grid>
             <Grid item xs={4}></Grid>
