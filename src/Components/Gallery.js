@@ -8,6 +8,7 @@ import content_happy_man from '../static/content_happy_man.jpeg';
 import result_happy_man from '../static/result_happy_man.jpg';
 import style_happy_man from '../static/style_happy_man.jpg';
 import content_cumberbatch from '../static/content_cumberbatch.jpg';
+import result_cumberbatch from '../static/result_cumberbatch.png';
 import style_cumberbatch from '../static/style_cumberbatch.jpg';
 
 class Gallery extends Component {
@@ -39,7 +40,7 @@ class Gallery extends Component {
                                   
             </Grid>
             <Grid item xs={5}>
-                <GalleryCard name = "C" date = "October 19, 2018" title = "Van Gogh vs. Sherlock" result = {starryMeResult} style = {style_cumberbatch} content = {content_cumberbatch} intro = {intro3}/>
+                <GalleryCard name = "C" date = "October 19, 2018" title = "Van Gogh vs. Sherlock" result = {result_cumberbatch} style = {style_cumberbatch} content = {content_cumberbatch} intro = {intro3}/>
             </Grid>
  
             <Grid item xs={5}>
