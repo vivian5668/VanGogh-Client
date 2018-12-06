@@ -1,16 +1,15 @@
 import React from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import FormControl from '@material-ui/core/FormControl';
-import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Email from '@material-ui/icons/Email';
-import previewPlaceholder from '../../static/previewPlaceholder.png'
+import previewPlaceholder from '../../static/previewPlaceholder.png';
+import UploadButton from './UploadButton';
+import UploadButtonDisabled from './UploadButtonDisabled';
+
 
 class ImageUpload extends React.Component {
     constructor(props) {
@@ -94,12 +93,6 @@ class ImageUpload extends React.Component {
       let isJPG = this.state.isJPG && !!selectedFile;
       let isEnabled = name.length > 0 && email.length > 0 && !!selectedFile && isJPG;
 
-      const styles = theme => ({
-        margin: {
-          margin: theme.spacing.unit,
-        },
-      });
-
       let uploadStatus = '';
       let statusSuccess = <div id='imageUploadStatus' style={{color: 'blue'}}> Uploaded Successfully! </div>
       let statusFail = <div id='imageUploadStatus' style={{color: 'red'}}> Something went wrong, please try again later. :)</div>
@@ -155,14 +148,18 @@ class ImageUpload extends React.Component {
                     />
                     <div className="emptyLine"></div>
 
-                    <Input type="file" onChange={this.fileChangedHandler}/>     
-                    <button disabled={!isEnabled} onClick={this.uploadHandler}>Submit</button>
-                    {fileRestrictionMessage}
+                    <Input type="file" onChange={this.fileChangedHandler}/> 
+                    {fileRestrictionMessage} 
+                    <div className="emptyLine"></div> 
+                    <div id='uploadButton'>
+                        { isEnabled? <UploadButton onClick={this.uploadHandler}/> : <UploadButtonDisabled /> }                    
+                    </div>  
                     {uploadStatus}
                 </div>
                 </Grid>
+                <Grid item xs={1}></Grid>
                 <Grid id="imagePreviewContainer">
-                    { this.state.previewImg ? <img id="imagePreview" src={this.state.previewImg} alt="uploaded image" width="500"/> : null}
+                    { this.state.previewImg ? <img id="imagePreview" src={this.state.previewImg} width="500"/> : null}
                 </Grid>
                 <Grid item xs={2}></Grid>
             </Grid>

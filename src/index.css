@@ -45,3 +45,7 @@ code {
 #imagePreviewContainer {
   margin-top: 50px;
 }
+
+#uploadButton {
+  margin-left: -10px;
+}
