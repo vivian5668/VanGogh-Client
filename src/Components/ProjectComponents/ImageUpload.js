@@ -94,7 +94,7 @@ class ImageUpload extends React.Component {
       });
 
       let uploadStatus = '';
-      let statusSuccess = <div id='imageUploadStatus' style={{color: 'red'}}> Uploaded Successfully! </div>
+      let statusSuccess = <div id='imageUploadStatus' style={{color: 'blue'}}> Uploaded Successfully! </div>
       let statusFail = <div id='imageUploadStatus' style={{color: 'red'}}> Something went wrong, please try again later. :)</div>
 
       if (this.state.uploadStatus === 200) {
@@ -104,7 +104,7 @@ class ImageUpload extends React.Component {
       }
 
       let fileRestrictionMessage = ''
-      let fileRestrictionPassed = <div id='fileRestrictionWarning' style={{color: 'red'}}> Image is in the correct format! Good job!</div>
+      let fileRestrictionPassed = <div id='fileRestrictionWarning' style={{color: 'blue'}}> Image is in the correct format! Good job!</div>
       let fileRestrictionWarning = <div id='fileRestrictionWarning' style={{color: 'red'}}> Image has to be in .JPG ot .JPEG format</div>
 
       if (isJPG) {
