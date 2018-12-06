@@ -21,6 +21,7 @@ class ImageUpload extends React.Component {
         style: "Van_style",
         uploadStatus: '',
         isJPG: false,
+        img: null
         }
     }
 
@@ -31,6 +32,12 @@ class ImageUpload extends React.Component {
         if (fileName.substr(fileName.length - 4) === 'jpeg' || fileName.substr(fileName.length - 3) === 'jpg') {
             this.setState({isJPG: true})
             console.log('image is in right format')
+
+            const reader = new FileReader()
+            reader.readAsDataURL(event.target.files[0])
+            reader.onload = () => {
+                this.setState({img: reader.result})
+            }
         } else {
             this.setState({isJPG: false})
             console.log('image is wrong!!!')
@@ -104,7 +111,7 @@ class ImageUpload extends React.Component {
 
       let fileRestrictionMessage = ''
       let fileRestrictionPassed = <div id='fileRestrictionWarning' style={{color: 'blue'}}> Image is in the correct format! Good job!</div>
-      let fileRestrictionWarning = <div id='fileRestrictionWarning' style={{color: 'red'}}> Image has to be in .JPG ot .JPEG format</div>
+      let fileRestrictionWarning = <div id='fileRestrictionWarning' style={{color: 'red'}}> Image has to be in .JPG or .JPEG format</div>
 
       if (isJPG) {
         fileRestrictionMessage = fileRestrictionPassed
@@ -112,12 +119,6 @@ class ImageUpload extends React.Component {
         fileRestrictionMessage = fileRestrictionWarning
       }
 
-      let imagePreview;
-      if (!!selectedFile) {
-          console.log(this.state.selectedFile);
-          console.log(typeof this.state.selectedFile);
-          imagePreview = <img src={this.state.selectedFile} alt="uploaded image"/>
-      }
 
       return (
         <div>
@@ -161,7 +162,7 @@ class ImageUpload extends React.Component {
                 </Grid>
                 <Grid item xs={4}></Grid>
             </Grid>
-            {imagePreview}
+            { this.state.img ? <img src={this.state.img} alt="uploaded image"/> : null}
         </div>
       )
     }
