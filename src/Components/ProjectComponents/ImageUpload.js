@@ -67,7 +67,6 @@ class ImageUpload extends React.Component {
             console.log("resule")
             console.log(formData)
             
-//            axios.post('https://f43rz8mmc3.execute-api.us-west-2.amazonaws.com/prod/submit', formData, {
             axios.post('https://07td6ekz5b.execute-api.us-west-2.amazonaws.com/prod/submit', formData, {
                 onUploadProgress: progressEvent => {
                     console.log('uploading progress: ' + progressEvent.loaded / progressEvent.total)
@@ -113,47 +112,57 @@ class ImageUpload extends React.Component {
         fileRestrictionMessage = fileRestrictionWarning
       }
 
+      let imagePreview;
+      if (!!selectedFile) {
+          console.log(this.state.selectedFile);
+          console.log(typeof this.state.selectedFile);
+          imagePreview = <img src={this.state.selectedFile} alt="uploaded image"/>
+      }
+
       return (
-        <Grid container spacing={24}>
-            <Grid item xs={4}></Grid>
-            <Grid>
-              <div id='formInput'>
-                <InputLabel htmlFor="input-with-icon-adornment">Name:  </InputLabel>
-                <Input
-                    id="input-with-icon-adornment"
-                    startAdornment={
-                        <InputAdornment position="start">
-                        <AccountCircle />
-                        </InputAdornment>
-                    }
-                    type="text" 
-                    onChange={this.nameChangeHandler} 
-                    placeholder="Sam Smith"
-                />
-                <div className="emptyLine"></div>
+        <div>
+            <Grid container spacing={24}>
+                <Grid item xs={4}></Grid>
+                <Grid>
+                <div id='formInput'>
+                    <InputLabel htmlFor="input-with-icon-adornment">Name:  </InputLabel>
+                    <Input
+                        id="input-with-icon-adornment"
+                        startAdornment={
+                            <InputAdornment position="start">
+                            <AccountCircle />
+                            </InputAdornment>
+                        }
+                        type="text" 
+                        onChange={this.nameChangeHandler} 
+                        placeholder="Sam Smith"
+                    />
+                    <div className="emptyLine"></div>
 
-                <InputLabel htmlFor="input-with-icon-adornment">Email:  </InputLabel>
-                <Input
-                    id="input-with-icon-adornment"
-                    startAdornment={
-                        <InputAdornment position="start">
-                        <Email />
-                        </InputAdornment>
-                    }
-                    type="email" 
-                    onChange={this.emailChangeHandler} 
-                    placeholder="sam@gmail.com"
-                />
-                <div className="emptyLine"></div>
+                    <InputLabel htmlFor="input-with-icon-adornment">Email:  </InputLabel>
+                    <Input
+                        id="input-with-icon-adornment"
+                        startAdornment={
+                            <InputAdornment position="start">
+                            <Email />
+                            </InputAdornment>
+                        }
+                        type="email" 
+                        onChange={this.emailChangeHandler} 
+                        placeholder="sam@gmail.com"
+                    />
+                    <div className="emptyLine"></div>
 
-                <Input type="file" onChange={this.fileChangedHandler}/>     
-                <button disabled={!isEnabled} onClick={this.uploadHandler}>Submit</button>
-                {fileRestrictionMessage}
-                {uploadStatus}
-              </div>
+                    <Input type="file" onChange={this.fileChangedHandler}/>     
+                    <button disabled={!isEnabled} onClick={this.uploadHandler}>Submit</button>
+                    {fileRestrictionMessage}
+                    {uploadStatus}
+                </div>
+                </Grid>
+                <Grid item xs={4}></Grid>
             </Grid>
-            <Grid item xs={4}></Grid>
-        </Grid>
+            {imagePreview}
+        </div>
       )
     }
   }
