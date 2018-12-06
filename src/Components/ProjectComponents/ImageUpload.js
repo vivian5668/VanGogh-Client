@@ -1,5 +1,14 @@
 import React from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormControl from '@material-ui/core/FormControl';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 
 class ImageUpload extends React.Component {
     constructor(props) {
@@ -64,6 +73,13 @@ class ImageUpload extends React.Component {
       let email = this.state.email;
       let selectedFile = this.state.selectedFile;
       let isEnabled = name.length > 0 && email.length > 0 && !!selectedFile;
+
+      const styles = theme => ({
+        margin: {
+          margin: theme.spacing.unit,
+        },
+      });
+
       return (
         <div>
             <label>Your name:</label>
@@ -75,6 +91,16 @@ class ImageUpload extends React.Component {
             <input type="file" onChange={this.fileChangedHandler} />
             <button disabled={!isEnabled} onClick={this.uploadHandler}>Submit</button>
             <div id='imageUploadStatus' style={{color: 'red'}}> {this.state.uploadStatus} </div>
+            <InputLabel htmlFor="input-with-icon-adornment">Name:  </InputLabel>
+            <Input
+                id="input-with-icon-adornment"
+                startAdornment={
+                    <InputAdornment position="start">
+                    <AccountCircle />
+                    </InputAdornment>
+                }
+            />
+        
         </div>
       )
     }
