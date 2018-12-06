@@ -9,6 +9,7 @@ import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import Email from '@material-ui/icons/Email';
 
 class ImageUpload extends React.Component {
     constructor(props) {
@@ -114,7 +115,7 @@ class ImageUpload extends React.Component {
                     id="input-with-icon-adornment"
                     startAdornment={
                         <InputAdornment position="start">
-                        <AccountCircle />
+                        <Email />
                         </InputAdornment>
                     }
                     type="email" 
