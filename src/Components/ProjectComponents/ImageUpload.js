@@ -81,27 +81,45 @@ class ImageUpload extends React.Component {
       });
 
       return (
-        <div>
-            <label>Your name:</label>
-            <input type="text" onChange={this.nameChangeHandler} placeholder="name"/>
-            <br />
-            <label>Your email address:</label>
-            <input type="email" onChange={this.emailChangeHandler} placeholder="email"/>
-            <br />
-            <input type="file" onChange={this.fileChangedHandler} />
-            <button disabled={!isEnabled} onClick={this.uploadHandler}>Submit</button>
-            <div id='imageUploadStatus' style={{color: 'red'}}> {this.state.uploadStatus} </div>
-            <InputLabel htmlFor="input-with-icon-adornment">Name:  </InputLabel>
-            <Input
-                id="input-with-icon-adornment"
-                startAdornment={
-                    <InputAdornment position="start">
-                    <AccountCircle />
-                    </InputAdornment>
-                }
-            />
-        
-        </div>
+        <Grid container spacing={24}>
+            <Grid item xs={4}></Grid>
+            <Grid>
+              <div id='formInput'>
+                <InputLabel htmlFor="input-with-icon-adornment">Name:  </InputLabel>
+                <Input
+                    id="input-with-icon-adornment"
+                    startAdornment={
+                        <InputAdornment position="start">
+                        <AccountCircle />
+                        </InputAdornment>
+                    }
+                    type="text" 
+                    onChange={this.nameChangeHandler} 
+                    placeholder="Sam Smith"
+                />
+                <div className="emptyLine"></div>
+
+                <InputLabel htmlFor="input-with-icon-adornment">Email:  </InputLabel>
+                <Input
+                    id="input-with-icon-adornment"
+                    startAdornment={
+                        <InputAdornment position="start">
+                        <AccountCircle />
+                        </InputAdornment>
+                    }
+                    type="email" 
+                    onChange={this.emailChangeHandler} 
+                    placeholder="sam@gmail.com"
+                />
+                <div className="emptyLine"></div>
+
+                <Input type="file" onChange={this.fileChangedHandler}/>     
+                <button disabled={!isEnabled} onClick={this.uploadHandler}>Submit</button>
+                <div id='imageUploadStatus' style={{color: 'red'}}> {this.state.uploadStatus} </div>  
+              </div>
+            </Grid>
+            <Grid item xs={4}></Grid>
+        </Grid>
       )
     }
   }

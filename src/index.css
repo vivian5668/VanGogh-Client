@@ -29,3 +29,11 @@ code {
   color: grey;
   font-size: 1.2vw;
 }
+
+#formInput {
+  margin-top: 50px;
+}
+
+.emptyLine {
+  height: 20px;
+}
