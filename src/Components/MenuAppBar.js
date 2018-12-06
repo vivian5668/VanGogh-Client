@@ -37,7 +37,7 @@ function MenuAppBar(props) {
             <i className="fas fa-palette"></i>
           </IconButton>         
           <Typography align="center" variant="h6"  className={classes.grow}>
-            Moody Van Gogh &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            AI Painting Van Gogh &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
           </Typography>
           <IconButton href="https://github.com/vivian5668" className={classes.menuButton}  aria-label="Menu">
             <i className="fab fa-github"></i>
