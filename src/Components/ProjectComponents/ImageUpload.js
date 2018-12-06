@@ -20,10 +20,21 @@ class ImageUpload extends React.Component {
         email: '',
         style: "Van_style",
         uploadStatus: '',
+        isJPG: false,
         }
     }
+
     fileChangedHandler = (event) => {
         this.setState({selectedFile: event.target.files[0]})
+        let fileName = event.target.files[0].name
+
+        if (fileName.substr(fileName.length - 4) === 'jpeg' || fileName.substr(fileName.length - 3) === 'jpg') {
+            this.setState({isJPG: true})
+            console.log('image is in right format')
+        } else {
+            this.setState({isJPG: false})
+            console.log('image is wrong!!!')
+        }
       }
 
     nameChangeHandler = (event) => {
@@ -73,7 +84,8 @@ class ImageUpload extends React.Component {
       let name = this.state.name;
       let email = this.state.email;
       let selectedFile = this.state.selectedFile;
-      let isEnabled = name.length > 0 && email.length > 0 && !!selectedFile;
+      let isJPG = this.state.isJPG && !!selectedFile;
+      let isEnabled = name.length > 0 && email.length > 0 && !!selectedFile && isJPG;
 
       const styles = theme => ({
         margin: {
@@ -89,6 +101,16 @@ class ImageUpload extends React.Component {
         uploadStatus = statusSuccess;
       } else if (this.state.uploadStatus.length > 0) {
         uploadStatus = statusFail;
+      }
+
+      let fileRestrictionMessage = ''
+      let fileRestrictionPassed = <div id='fileRestrictionWarning' style={{color: 'red'}}> Image is in the correct format! Good job!</div>
+      let fileRestrictionWarning = <div id='fileRestrictionWarning' style={{color: 'red'}}> Image has to be in .JPG ot .JPEG format</div>
+
+      if (isJPG) {
+        fileRestrictionMessage = fileRestrictionPassed
+      } else {
+        fileRestrictionMessage = fileRestrictionWarning
       }
 
       return (
@@ -126,7 +148,8 @@ class ImageUpload extends React.Component {
 
                 <Input type="file" onChange={this.fileChangedHandler}/>     
                 <button disabled={!isEnabled} onClick={this.uploadHandler}>Submit</button>
-                <div id='imageUploadStatus' style={{color: 'red'}}> {uploadStatus} </div>  
+                {fileRestrictionMessage}
+                {uploadStatus}
               </div>
             </Grid>
             <Grid item xs={4}></Grid>
