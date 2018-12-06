@@ -37,3 +37,11 @@ code {
 .emptyLine {
   height: 20px;
 }
+
+#imagePreview {
+  border-radius: 20px;
+}
+
+#imagePreviewContainer {
+  margin-top: 50px;
+}

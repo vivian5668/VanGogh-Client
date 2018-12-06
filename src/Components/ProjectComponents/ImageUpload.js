@@ -10,6 +10,7 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Email from '@material-ui/icons/Email';
+import previewPlaceholder from '../../static/previewPlaceholder.png'
 
 class ImageUpload extends React.Component {
     constructor(props) {
@@ -21,7 +22,7 @@ class ImageUpload extends React.Component {
         style: "Van_style",
         uploadStatus: '',
         isJPG: false,
-        img: null
+        previewImg: previewPlaceholder,
         }
     }
 
@@ -36,7 +37,7 @@ class ImageUpload extends React.Component {
             const reader = new FileReader()
             reader.readAsDataURL(event.target.files[0])
             reader.onload = () => {
-                this.setState({img: reader.result})
+                this.setState({previewImg: reader.result})
             }
         } else {
             this.setState({isJPG: false})
@@ -123,7 +124,7 @@ class ImageUpload extends React.Component {
       return (
         <div>
             <Grid container spacing={24}>
-                <Grid item xs={4}></Grid>
+                <Grid item xs={2}></Grid>
                 <Grid>
                 <div id='formInput'>
                     <InputLabel htmlFor="input-with-icon-adornment">Name:  </InputLabel>
@@ -160,9 +161,11 @@ class ImageUpload extends React.Component {
                     {uploadStatus}
                 </div>
                 </Grid>
-                <Grid item xs={4}></Grid>
+                <Grid id="imagePreviewContainer">
+                    { this.state.previewImg ? <img id="imagePreview" src={this.state.previewImg} alt="uploaded image" width="500"/> : null}
+                </Grid>
+                <Grid item xs={2}></Grid>
             </Grid>
-            { this.state.img ? <img src={this.state.img} alt="uploaded image"/> : null}
         </div>
       )
     }

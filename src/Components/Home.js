@@ -13,7 +13,7 @@ class Home extends Component {
             </Grid>
             <Grid item xs={7}>
                 <div>
-                    <img width={580} src={homePic} alt='hero-item'/>
+                    <img width={680} src={homePic} alt='hero-item'/>
                 </div>
             </Grid>
             <Grid item xs={3}>
