@@ -10,7 +10,6 @@ import previewPlaceholder from '../../static/previewPlaceholder.png';
 import UploadButton from './UploadButton';
 import UploadButtonDisabled from './UploadButtonDisabled';
 
-
 class ImageUpload extends React.Component {
     constructor(props) {
       super(props);
@@ -104,7 +103,7 @@ class ImageUpload extends React.Component {
       }
 
       let fileRestrictionMessage = ''
-      let fileRestrictionPassed = <div id='fileRestrictionWarning' style={{color: 'blue'}}> Image is in the correct format! Your AI thanks you!</div>
+      let fileRestrictionPassed = <div id='fileRestrictionWarning' style={{color: 'blue'}}> Correct format! Your AI thanks you!</div>
       let fileRestrictionWarning = <div id='fileRestrictionWarning' style={{color: 'red'}}> Image has to be in .JPG or .JPEG format</div>
 
       if (isJPG) {

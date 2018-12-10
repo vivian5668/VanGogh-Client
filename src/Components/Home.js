@@ -12,9 +12,7 @@ class Home extends Component {
 
             </Grid>
             <Grid item xs={7}>
-                <div>
-                    <img width={680} src={homePic} alt='hero-item'/>
-                </div>
+                <img id='hero-item' src={homePic} alt='hero-item'/>
             </Grid>
             <Grid item xs={3}>
                 <p id = "HomeText1">Van Gogh Style Painted by AI</p>
