@@ -53,3 +53,16 @@ code {
 #uploadButton {
   margin-left: -10px;
 }
+
+#Background {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+#blueBackground {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
