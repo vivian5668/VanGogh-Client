@@ -7,22 +7,32 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <p></p>
         <Grid container spacing={24}>
             <Grid item xs={1}></Grid>
-            <Grid item xs={7}>
+            <Grid item xs={6}>
                 <img id='hero-item' src={homePic} alt='hero-item'/>
             </Grid>
-            <Grid item xs={3}>
-                <p id = "HomeText1">Van Gogh Style Painted by AI</p>
-                <p id = "HomeText2">Turn your selfie into Van Gogh Painting</p>
-                <p id = "HomeText3"> Notice the use of %PUBLIC_URL% in the tags above.
-                    It will be replaced with the URL of the `public` folder during the build.
-                    Only files inside the `public` folder can be referenced from the HTML.
-                    Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-                </p>
+            <Grid item xs={4}>
+                <div id='homePageTextBlock'>
+                    <p id = "HomeText1">Van Gogh Style Painted by AI</p>
+                    <p id = "HomeText2">Turn your selfie into Van Gogh Painting</p>
+                    <p id = "HomeText3">This is a serverless React application that can turn your selfie
+                    into Van Gogh Painting style using a pretrained VGG-19 Convolutional Neural Network. This
+                    model is implemented using Pytorch. 
+                    <hr/>
+                    The application uses micro-services implemented by AWS native tech stacks, including:
+                    Fargate, DynamoDB, API Gateway, Lambda, SES(simple email service), SNS(simple notification service),
+                    and S3.
+                    <br/>
+                    <br/>
+                    Read More here:
+                    <br/>
+                    <a href="https://github.com/vivian5668/VanGogh-Client">Github Readme and FrontEnd</a>
+                    <br/>
+                    <a href="https://github.com/vivian5668/VanGogh-Service">Github Data Science model </a>
+                    </p>
+                    </div>
             </Grid>         
-            <Grid item xs={1}></Grid>                
         </Grid>
         <div id='Background'>
             <img id='blueBackground' src={blueBackground} alt='Background' />
