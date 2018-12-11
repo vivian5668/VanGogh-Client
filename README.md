@@ -43,6 +43,10 @@ run `npm run build`,
 and `aws s3 sync . s3://style-transfer-frontend/`
 
 
+## Further Development
+-- Introduce AWS StepFunstions to manage all micro-services
+![stepFunctions][github_readme_images/stepFunctions.png]
+
 
 References:
 ---
