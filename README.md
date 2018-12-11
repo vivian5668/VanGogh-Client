@@ -4,7 +4,7 @@ View Live Site here:
 http://style-transfer-frontend.s3-website-us-west-2.amazonaws.com/
 
 
-![app_front_page]("github_readme_images/app_front_page.png")
+![app_front_page](github_readme_images/app_front_page.png)
 
 ![app_stack]("github_readme_images/app_stack.png")
 
