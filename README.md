@@ -5,6 +5,9 @@
 ### Live Site:
 http://style-transfer-frontend.s3-website-us-west-2.amazonaws.com/
 
+### Data Science Model:
+https://github.com/vivian5668/VanGogh-Service
+
 
 This is a serverless React application that can turn your selfie into Van Gogh Painting style using a pretrained VGG-19 Convolutional Neural Network. This model is implemented using Pytorch.
 
